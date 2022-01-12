@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Demo</title>
+  <style>
+    :root {
+      --scrollbar: 0;
+    }
+    body {
+      margin: 0;
+    }
+    div {
+      width: calc(100vw - var(--scrollbar));
+      height: 500px;
+      background-color: tomato;
+    }
+    /* 見た目用 */
+    div {
+      display: grid;
+      place-items: center;
+      font-size: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <p>
+      スクロールバーの幅は<output></output>です。
+    </p>
+  </div>
+  <script>
+    const output = document.querySelector('output');
+    const setScrollbarWidth = () => {
+      // A:スクロールバーを含む幅を取得する
+      const includeScrollBar = window.innerWidth;
+      // B:スクロールバーを含まない幅を取得する
+      const excludeScrollBar = document.querySelector("html").getBoundingClientRect().width;
+      // AからBを引くことでスクロールバーの幅を求める
+      const scrollbarWidth = parseInt((includeScrollBar - excludeScrollBar), 10) + 'px';
+      // カスタムプロパティの値を更新する
+      document.documentElement.style.setProperty('--scrollbar', scrollbarWidth);
+      output.value = scrollbarWidth;
+    };
+    // 表示されたとき
+    window.addEventListener('load', setScrollbarWidth);
+    // リサイズしたとき
+    window.addEventListener('resize', setScrollbarWidth);
+  </script>
+</body>
+</html>
