@@ -32,17 +32,14 @@
   </div>
   <script>
     const output = document.querySelector('output');
+
     const setScrollbarWidth = () => {
-      // A:スクロールバーを含む幅を取得する
-      const includeScrollBar = window.innerWidth;
-      // B:スクロールバーを含まない幅を取得する
-      const excludeScrollBar = document.querySelector("html").getBoundingClientRect().width;
-      // AからBを引くことでスクロールバーの幅を求める
-      const scrollbarWidth = parseInt((includeScrollBar - excludeScrollBar), 10) + 'px';
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
       // カスタムプロパティの値を更新する
-      document.documentElement.style.setProperty('--scrollbar', scrollbarWidth);
-      output.value = scrollbarWidth;
+      document.documentElement.style.setProperty('--scrollbar', `${scrollbarWidth}px`);
+      output.value = `${scrollbarWidth}px`;
     };
+
     // 表示されたとき
     window.addEventListener('load', setScrollbarWidth);
     // リサイズしたとき
