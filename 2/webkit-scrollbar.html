@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Demo</title>
+  <style>
+    div {
+      width: 200px;
+      height: 100px;
+      overflow: scroll;
+      outline: 1px solid tomato;
+      resize: both;
+    }
+    div::-webkit-scrollbar {
+      /* 垂直方向のスクロールバーの幅 */
+      width: 20px;
+      /* 水平方向のスクロールバーの幅 */
+      height: 20px;
+    }
+    div::-webkit-scrollbar-track {
+      border-radius: 10px;
+    }
+    div::-webkit-scrollbar-track:vertical {
+      background-color: green;
+    }
+    div::-webkit-scrollbar-track:horizontal {
+      background-color: red;
+    }
+    div::-webkit-scrollbar-track-piece:start {
+      background-color: rgba(0, 0, 0, 1);
+      border-radius: 10px;
+    }
+    div::-webkit-scrollbar-thumb {
+      border: 2px solid green;
+      border-radius: 10px;
+      background: #fff;
+    }
+    div::-webkit-resizer {
+      background-color: blue;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    The quick brown fox jumps over the lazy dog.
+    The quick brown fox jumps over the lazy dog.
+    The quick brown fox jumps over the lazy dog.
+    The quick brown fox jumps over the lazy dog.
+  </div>
+</body>
+</html>
